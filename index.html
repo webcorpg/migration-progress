@@ -201,6 +201,43 @@
     .badge-blocked { background: #f5d5d5; color: var(--block); }
     .badge-na { background: #e2e8e4; color: var(--na); }
     .badge-n\/a { background: #e2e8e4; color: var(--na); }
+    .why {
+      position: relative;
+      display: inline-block;
+      max-width: 14rem;
+    }
+    .why > summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+    .why > summary::-webkit-details-marker { display: none; }
+    .why > summary::after {
+      content: " ·";
+      opacity: 0.55;
+      font-weight: 700;
+    }
+    .why[open] > summary::after { content: " ×"; }
+    .why-body {
+      margin: 0.35rem 0 0;
+      padding: 0.55rem 0.65rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      line-height: 1.35;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--block);
+      border-radius: 2px;
+      box-shadow: 0 8px 24px rgba(20, 32, 28, 0.08);
+      white-space: normal;
+      min-width: 12rem;
+      max-width: 18rem;
+      z-index: 2;
+      position: relative;
+    }
     footer {
       padding: 2rem clamp(1.5rem, 4vw, 3.5rem) 3rem;
       color: var(--ink-soft);
@@ -237,7 +274,7 @@
         scrape, GitHub, Pages, forms, and DNS.
       </p>
       <a class="cta" href="#sites">View all sites ↓</a>
-      <p class="meta">Updated 2026-09-21 17:53 UTC · From mail: forms@webcorp.gr</p>
+      <p class="meta">Updated 2026-09-21 17:55 UTC · From mail: forms@webcorp.gr</p>
     </div>
   </header>
 
@@ -258,6 +295,7 @@
     <h2 id="sites-title">Sites</h2>
     <p class="section-lede">
       Preview opens the Cloudflare Pages URL (not the final custom domain until cutover).
+      Tap or hover a <strong>blocked</strong> / <strong>n/a</strong> badge for the reason.
     </p>
     <div class="table-wrap">
       <table>
@@ -305,7 +343,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
-              <td><span class="badge badge-blocked">blocked</span></td>
+              <td><details class="why"><summary class="badge badge-blocked" title="Cannot cut over DNS until zone is on our Cloudflare account (Bluehost NS — not on our CF)">blocked</summary><p class="why-body">Cannot cut over DNS until zone is on our Cloudflare account (Bluehost NS — not on our CF)</p></details></td>
               <td class="mono">GJ5HWASY</td>
               <td class="actions"><a class="preview" href="https://artinaoliveoil-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/artinaoliveoil.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -356,10 +394,10 @@
             <tr>
               <td class="num">8</td>
               <td class="domain"><strong>estiasiscatering.com</strong></td>
-              <td><span class="badge badge-blocked">blocked</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
+              <td><details class="why"><summary class="badge badge-blocked" title="unreachable HTTP 403">blocked</summary><p class="why-body">unreachable HTTP 403</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No CF Pages project — scrape blocked (unreachable HTTP 403)">n/a</summary><p class="why-body">No CF Pages project — scrape blocked (unreachable HTTP 403)</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable HTTP 403)">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable HTTP 403)</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable HTTP 403)">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable HTTP 403)</p></details></td>
               <td><span class="badge badge-pending">pending</span></td>
               <td class="mono">—</td>
               <td class="actions"><span class="muted">—</span> </td>
@@ -466,10 +504,10 @@
             <tr>
               <td class="num">18</td>
               <td class="domain"><strong>liotrivizakynthos.gr</strong></td>
-              <td><span class="badge badge-blocked">blocked</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
+              <td><details class="why"><summary class="badge badge-blocked" title="unreachable HTTP 403">blocked</summary><p class="why-body">unreachable HTTP 403</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No CF Pages project — scrape blocked (unreachable HTTP 403)">n/a</summary><p class="why-body">No CF Pages project — scrape blocked (unreachable HTTP 403)</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable HTTP 403)">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable HTTP 403)</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable HTTP 403)">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable HTTP 403)</p></details></td>
               <td><span class="badge badge-pending">pending</span></td>
               <td class="mono">—</td>
               <td class="actions"><span class="muted">—</span> </td>
@@ -547,7 +585,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
-              <td><span class="badge badge-blocked">blocked</span></td>
+              <td><details class="why"><summary class="badge badge-blocked" title="Cannot cut over DNS until zone is on our Cloudflare account (Bluehost NS — not on our CF)">blocked</summary><p class="why-body">Cannot cut over DNS until zone is on our Cloudflare account (Bluehost NS — not on our CF)</p></details></td>
               <td class="mono">V6p1OX8X</td>
               <td class="actions"><a class="preview" href="https://mtidesign-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/mtidesign.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -565,10 +603,10 @@
             <tr>
               <td class="num">27</td>
               <td class="domain"><strong>onarresidence.gr</strong></td>
-              <td><span class="badge badge-blocked">blocked</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
+              <td><details class="why"><summary class="badge badge-blocked" title="unreachable HTTP 500">blocked</summary><p class="why-body">unreachable HTTP 500</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No CF Pages project — scrape blocked (unreachable HTTP 500)">n/a</summary><p class="why-body">No CF Pages project — scrape blocked (unreachable HTTP 500)</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable HTTP 500)">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable HTTP 500)</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable HTTP 500)">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable HTTP 500)</p></details></td>
               <td><span class="badge badge-pending">pending</span></td>
               <td class="mono">—</td>
               <td class="actions"><span class="muted">—</span> </td>
@@ -664,10 +702,10 @@
             <tr>
               <td class="num">36</td>
               <td class="domain"><strong>webcorp.gr</strong></td>
-              <td><span class="badge badge-blocked">blocked</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
+              <td><details class="why"><summary class="badge badge-blocked" title="unreachable HTTP 503 (SMTP2GO sender OK)">blocked</summary><p class="why-body">unreachable HTTP 503 (SMTP2GO sender OK)</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No CF Pages project — scrape blocked (unreachable HTTP 503 (SMTP2GO sender OK))">n/a</summary><p class="why-body">No CF Pages project — scrape blocked (unreachable HTTP 503 (SMTP2GO sender OK))</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable HTTP 503 (SMTP2GO sender OK))">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable HTTP 503 (SMTP2GO sender OK))</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable HTTP 503 (SMTP2GO sender OK))">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable HTTP 503 (SMTP2GO sender OK))</p></details></td>
               <td><span class="badge badge-pending">pending</span></td>
               <td class="mono">—</td>
               <td class="actions"><span class="muted">—</span> </td>
@@ -697,10 +735,10 @@
             <tr>
               <td class="num">39</td>
               <td class="domain"><strong>zakynthosactivities.com</strong></td>
-              <td><span class="badge badge-blocked">blocked</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
-              <td><span class="badge badge-n-a">n/a</span></td>
+              <td><details class="why"><summary class="badge badge-blocked" title="unreachable DNS/timeout">blocked</summary><p class="why-body">unreachable DNS/timeout</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No CF Pages project — scrape blocked (unreachable DNS/timeout)">n/a</summary><p class="why-body">No CF Pages project — scrape blocked (unreachable DNS/timeout)</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable DNS/timeout)">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable DNS/timeout)</p></details></td>
+              <td><details class="why"><summary class="badge badge-n-a" title="No site scrape — forms not applicable (unreachable DNS/timeout)">n/a</summary><p class="why-body">No site scrape — forms not applicable (unreachable DNS/timeout)</p></details></td>
               <td><span class="badge badge-pending">pending</span></td>
               <td class="mono">—</td>
               <td class="actions"><span class="muted">—</span> </td>
