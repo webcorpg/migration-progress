@@ -41,7 +41,6 @@ function Get-Domains {
   # Fallback list (kept in sync with repo domains.txt)
   @(
     "albaalmare.com"
-    "alkimachos.gr"
     "bluesea-kalyves.com"
     "casaarmoniazakynthos.com"
     "dianaparasxi.gr"
