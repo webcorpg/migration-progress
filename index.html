@@ -82,6 +82,65 @@
       margin: 0 0 1.75rem;
       line-height: 1.55;
     }
+    .top-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1.25rem;
+      padding: 0.85rem clamp(1.5rem, 4vw, 3.5rem);
+      background: var(--sea-deep);
+      color: #e8f3ef;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .top-bar strong {
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .top-bar p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.4;
+      max-width: 46rem;
+    }
+    .top-bar .hint {
+      opacity: 0.82;
+      font-size: 0.82rem;
+    }
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .top-actions a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 2px;
+      color: var(--sea-deep);
+      background: #f5faf7;
+      border: 1px solid transparent;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .top-actions a:hover { background: #fff; transform: translateY(-1px); }
+    .top-actions a.secondary {
+      background: transparent;
+      color: #e8f3ef;
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+    .top-actions a.secondary:hover { background: rgba(255, 255, 255, 0.08); }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+    }
     .cta {
       display: inline-flex;
       align-items: center;
@@ -95,6 +154,12 @@
       transition: background 0.2s ease, transform 0.2s ease;
     }
     .cta:hover { background: var(--sea-deep); transform: translateY(-1px); }
+    .cta.ghost {
+      background: transparent;
+      color: var(--sea-deep);
+      border: 1px solid rgba(8, 76, 66, 0.35);
+    }
+    .cta.ghost:hover { background: rgba(12, 107, 92, 0.08); }
     .meta {
       margin-top: 1.25rem;
       font-size: 0.85rem;
@@ -307,6 +372,20 @@
   </style>
 </head>
 <body>
+  <div class="top-bar">
+    <p>
+      <strong>Windows — clone all sites</strong><br />
+      Downloads every migrated repo into
+      <code>C:\Users\&lt;you&gt;\Projects\&lt;domain&gt;</code>
+      (clone first run, pull later). Needs Git for Windows + GitHub access.
+      <span class="hint">Double-click the .cmd after unzipping.</span>
+    </p>
+    <div class="top-actions">
+      <a href="windows/clone-all-sites.zip">Download ZIP</a>
+      <a class="secondary" href="windows/clone-all-sites.cmd">.cmd</a>
+      <a class="secondary" href="windows/clone-all-sites.ps1">.ps1</a>
+    </div>
+  </div>
   <header class="hero">
     <div class="hero-inner">
       <p class="brand">Web<span>Corp</span></p>
@@ -315,8 +394,11 @@
         Live status for the WordPress → Cloudflare Pages cutover across client sites —
         scrape, GitHub, Pages, forms, and DNS.
       </p>
-      <a class="cta" href="#sites">View all sites ↓</a>
-      <p class="meta">Updated 2026-09-28 16:54 UTC · From mail: forms@webcorp.gr</p>
+      <div class="cta-row">
+        <a class="cta" href="#sites">View all sites ↓</a>
+        <a class="cta ghost" href="windows/clone-all-sites.zip">Windows clone script</a>
+      </div>
+      <p class="meta">Updated 2026-09-28 17:39 UTC · From mail: forms@webcorp.gr</p>
     </div>
   </header>
 
