@@ -24,6 +24,8 @@
 param(
   [string]$ProjectsRoot = (Join-Path $env:USERPROFILE "Projects"),
   [string]$GitHubOrg = "webcorpg",
+  [ValidateSet("1", "2", "All")]
+  [string]$Phase = "1",
   [switch]$UseSsh,
   [string]$DomainsFile = ""
 )
@@ -38,44 +40,29 @@ function Get-Domains {
       Where-Object { $_ -and ($_ -notmatch '^\s*#') }
   }
 
-  # Fallback list (kept in sync with repo domains.txt)
+  # Fallback list = Phase 1 (default). Use -Phase All or -Phase 2 for others.
   @(
     "albaalmare.com"
-    "bluesea-kalyves.com"
     "casaarmoniazakynthos.com"
     "dianaparasxi.gr"
-    "eliastudioszakynthos.com"
     "estiasiscatering.com"
     "familymarketzante.com"
     "galasvilla.gr"
     "gkalogerias.gr"
-    "gounelis.gr"
-    "islandretreats.gr"
-    "ixoxromazakynthos.gr"
     "kipivillage.com"
-    "loukouloschania.gr"
-    "magnoliazakynthos.com"
-    "mareasuiteszante.gr"
     "marrymeinzante.com"
     "milkhoneyresidence.gr"
     "movida.gr"
     "mtidesign.gr"
-    "myprivatekitchen.gr"
     "onarresidence.gr"
     "perlabeachvilla.com"
     "roulagouskou.gr"
-    "sanleonzante.com"
-    "soleilvillas.gr"
     "stravopodis.gr"
     "varrestennisclub.gr"
-    "villa-phoenix.com"
     "windmillrestovasilikos.com"
     "yakinthosflowers.gr"
     "zanteskysuites.com"
     "zoupanou.gr"
-    "albadorozante.gr"
-    "delphisdigital.com"
-    "deckboatrentals.gr"
   )
 }
 
@@ -91,12 +78,19 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
   Write-Error "git is not installed or not on PATH. Install Git for Windows first: https://git-scm.com/download/win"
 }
 
-# Prefer domains.txt next to this script, then sibling ../domains.txt
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$parentDir = Split-Path -Parent $scriptDir
 if (-not $DomainsFile) {
+  $name = switch ($Phase) {
+    "1" { "domains-phase1.txt" }
+    "2" { "domains-phase2.txt" }
+    default { "domains.txt" }
+  }
   $candidates = @(
+    (Join-Path $scriptDir $name),
+    (Join-Path $parentDir $name),
     (Join-Path $scriptDir "domains.txt"),
-    (Join-Path (Split-Path -Parent $scriptDir) "domains.txt")
+    (Join-Path $parentDir "domains.txt")
   )
   foreach ($c in $candidates) {
     if (Test-Path -LiteralPath $c) { $DomainsFile = $c; break }
@@ -113,6 +107,8 @@ New-Item -ItemType Directory -Force -Path $ProjectsRoot | Out-Null
 Write-Host "Projects root : $ProjectsRoot"
 Write-Host "GitHub org    : $GitHubOrg"
 Write-Host "Auth mode     : $(if ($UseSsh) { 'SSH' } else { 'HTTPS' })"
+Write-Host "Phase         : $Phase"
+Write-Host "Domains file  : $(if ($DomainsFile) { $DomainsFile } else { '(embedded fallback)' })"
 Write-Host "Domains       : $($domains.Count)"
 Write-Host ""
 
