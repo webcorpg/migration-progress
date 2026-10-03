@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WebCorp — Migration progress</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #14201c;
+      --ink-soft: #3a4a44;
+      --paper: #e8efe8;
+      --paper-2: #d5e2d8;
+      --sea: #0c6b5c;
+      --sea-deep: #084c42;
+      --sun: #e3a008;
+      --line: rgba(20, 32, 28, 0.12);
+      --ok: #1a7a4c;
+      --pend: #9a6b12;
+      --block: #9b2c2c;
+      --na: #5c6b65;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Manrope, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, rgba(12, 107, 92, 0.18), transparent 55%),
+        radial-gradient(900px 500px at 100% 0%, rgba(227, 160, 8, 0.16), transparent 50%),
+        linear-gradient(180deg, #f3f7f3 0%, var(--paper) 40%, #dfe9e2 100%);
+      min-height: 100vh;
+    }
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      align-content: end;
+      padding: clamp(1.5rem, 4vw, 3.5rem);
+      padding-bottom: clamp(2.5rem, 8vh, 5rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, transparent 40%, rgba(12, 107, 92, 0.08) 40.2%, rgba(12, 107, 92, 0.08) 60%, transparent 60.2%),
+        repeating-linear-gradient(
+          -18deg,
+          transparent,
+          transparent 28px,
+          rgba(20, 32, 28, 0.03) 28px,
+          rgba(20, 32, 28, 0.03) 29px
+        );
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; max-width: 1100px; }
+    .brand {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(3.2rem, 10vw, 6.5rem);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      margin: 0 0 1rem;
+      color: var(--sea-deep);
+    }
+    .brand span { color: var(--sun); font-style: italic; }
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      margin: 0 0 0.75rem;
+      max-width: 16ch;
+    }
+    .lede {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 36rem;
+      margin: 0 0 1.75rem;
+      line-height: 1.55;
+    }
+    .top-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1.25rem;
+      padding: 0.85rem clamp(1.5rem, 4vw, 3.5rem);
+      background: var(--sea-deep);
+      color: #e8f3ef;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .top-bar strong {
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .top-bar p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.4;
+      max-width: 46rem;
+    }
+    .top-bar .hint {
+      opacity: 0.82;
+      font-size: 0.82rem;
+    }
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .top-actions a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 2px;
+      color: var(--sea-deep);
+      background: #f5faf7;
+      border: 1px solid transparent;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .top-actions a:hover { background: #fff; transform: translateY(-1px); }
+    .top-actions a.secondary {
+      background: transparent;
+      color: #e8f3ef;
+      border-color: rgba(255, 255, 255, 0.28);
+    }
+    .top-actions a.secondary:hover { background: rgba(255, 255, 255, 0.08); }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--sea);
+      color: #f5faf7;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.85rem 1.25rem;
+      border-radius: 2px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .cta:hover { background: var(--sea-deep); transform: translateY(-1px); }
+    .cta.ghost {
+      background: transparent;
+      color: var(--sea-deep);
+      border: 1px solid rgba(8, 76, 66, 0.35);
+    }
+    .cta.ghost:hover { background: rgba(12, 107, 92, 0.08); }
+    .meta {
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+    }
+    section {
+      padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.5rem);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin: 0 0 0.5rem;
+    }
+    .section-lede {
+      color: var(--ink-soft);
+      margin: 0 0 2rem;
+      max-width: 40rem;
+    }
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.85rem;
+    }
+    .stat {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid var(--line);
+      padding: 1.1rem 1rem;
+      border-radius: 2px;
+    }
+    .stat b {
+      display: block;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--sea-deep);
+    }
+    .stat span {
+      display: block;
+      margin-top: 0.45rem;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-soft);
+    }
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 2px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      min-width: 860px;
+    }
+    th, td {
+      padding: 0.7rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: middle;
+    }
+    th {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+      background: rgba(12, 107, 92, 0.06);
+      position: sticky;
+      top: 0;
+    }
+    tr:hover td { background: rgba(12, 107, 92, 0.04); }
+    .num { color: var(--ink-soft); width: 2.5rem; }
+    .domain { white-space: nowrap; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8rem; }
+    .actions { white-space: nowrap; }
+    .preview, .gh {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.82rem;
+      margin-right: 0.55rem;
+    }
+    .preview { color: var(--sea); }
+    .gh { color: var(--ink-soft); }
+    .preview:hover, .gh:hover { text-decoration: underline; }
+    .muted { color: var(--na); }
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.2rem 0.45rem;
+      border-radius: 2px;
+      background: #dde5df;
+      color: var(--na);
+    }
+    .badge-done { background: #d5efe0; color: var(--ok); }
+    .badge-pending { background: #f7e8c4; color: var(--pend); }
+    .badge-blocked { background: #f5d5d5; color: var(--block); }
+    .badge-na { background: #e2e8e4; color: var(--na); }
+    .badge-n\/a { background: #e2e8e4; color: var(--na); }
+    .why {
+    .phase-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.45rem;
+      border-radius: 2px;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+    .phase-tag.p1 { background: #d5efe0; color: var(--ok); }
+    .phase-tag.p2 { background: #e2e8e4; color: var(--na); }
+    .phase-head {
+      margin: 2rem 0 0.75rem;
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: 1.45rem;
+    }
+    .phase-head:first-of-type { margin-top: 0.5rem; }
+      position: relative;
+      display: inline-block;
+      max-width: 14rem;
+    }
+    .why > summary {
+      list-style: none;
+      cursor: pointer;
+      user-select: none;
+    }
+    .why > summary::-webkit-details-marker { display: none; }
+    .why > summary::after {
+      content: " ·";
+      opacity: 0.55;
+      font-weight: 700;
+    }
+    .why[open] > summary::after { content: " ×"; }
+    .why-body {
+      margin: 0.35rem 0 0;
+      padding: 0.55rem 0.65rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      line-height: 1.35;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--block);
+      border-radius: 2px;
+      box-shadow: 0 8px 24px rgba(20, 32, 28, 0.08);
+      white-space: normal;
+      min-width: 12rem;
+      max-width: 18rem;
+      z-index: 2;
+      position: relative;
+    }
+    footer {
+      padding: 2rem clamp(1.5rem, 4vw, 3.5rem) 3rem;
+      color: var(--ink-soft);
+      font-size: 0.85rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .hist-card {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 1.15rem 1.2rem;
+    }
+    .hist-card h3 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: 1.35rem;
+      margin: 0 0 0.75rem;
+      color: var(--sea-deep);
+    }
+    .hist-card p {
+      margin: 0 0 0.85rem;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .hist-card p:last-child { margin-bottom: 0; }
+    .hist-card strong { color: var(--ink); font-weight: 600; }
+    .subhead {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-weight: 400;
+      font-size: 1.35rem;
+      margin: 1.5rem 0 0.75rem;
+    }
+    .plain-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      max-width: 52rem;
+    }
+    .plain-list li { margin-bottom: 0.45rem; }
+    .plain-list strong { color: var(--ink); }
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-inner {
+        animation: rise 0.9s ease both;
+      }
+      .pipeline .stat {
+        animation: rise 0.7s ease both;
+      }
+      .pipeline .stat:nth-child(2) { animation-delay: 0.05s; }
+      .pipeline .stat:nth-child(3) { animation-delay: 0.1s; }
+      .pipeline .stat:nth-child(4) { animation-delay: 0.15s; }
+      .pipeline .stat:nth-child(5) { animation-delay: 0.2s; }
+      .pipeline .stat:nth-child(6) { animation-delay: 0.25s; }
+      @keyframes rise {
+        from { opacity: 0; transform: translateY(14px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <p>
+      <strong>Windows — clone all sites</strong><br />
+      Downloads every migrated repo into
+      <code>C:\Users\&lt;you&gt;\Projects\&lt;domain&gt;</code>
+      (clone first run, pull later). Needs Git for Windows + GitHub access.
+      <span class="hint">Double-click the .cmd after unzipping.</span>
+    </p>
+    <div class="top-actions">
+      <a href="windows/clone-all-sites.zip">Download ZIP</a>
+      <a class="secondary" href="windows/clone-all-sites.cmd">.cmd</a>
+      <a class="secondary" href="windows/clone-all-sites.ps1">.ps1</a>
+    </div>
+  </div>
+  <header class="hero">
+    <div class="hero-inner">
+      <p class="brand">Web<span>Corp</span></p>
+      <h1>Migration progress</h1>
+      <p class="lede">
+        Live status for the WordPress → Cloudflare Pages cutover —
+        Phase 1 first (21 sites), then Phase 2 (15).
+        Scrape, GitHub, Pages, forms, and DNS.
+      </p>
+      <div class="cta-row">
+        <a class="cta" href="#sites">View all sites ↓</a>
+        <a class="cta ghost" href="windows/clone-all-sites.zip">Windows clone script</a>
+      </div>
+      <p class="meta">Updated 2026-10-03 11:36 UTC · From mail: forms@webcorp.gr</p>
+    </div>
+  </header>
+
+  <section aria-labelledby="pipeline-title">
+    <h2 id="pipeline-title">Pipeline</h2>
+    <p class="section-lede">Counts across 36 domains · Phase 1: 21 · Phase 2: 15.</p>
+    <div class="pipeline">
+      <div class="stat"><b>36</b><span>Scraped</span></div>
+      <div class="stat"><b>36</b><span>CF Pages</span></div>
+      <div class="stat"><b>36</b><span>CF DNS zones</span></div>
+      <div class="stat"><b>36</b><span>Forms created</span></div>
+      <div class="stat"><b>36</b><span>Forms in HTML</span></div>
+      <div class="stat"><b>10</b><span>QA fixes</span></div>
+      <div class="stat"><b>0</b><span>DNS cutover</span></div>
+    </div>
+  </section>
+
+  
+  <section id="blocks" aria-labelledby="blocks-title">
+    <h2 id="blocks-title">Why sites were blocked</h2>
+    <p class="section-lede">
+      Sites that failed the first scrape pass, what caused it, and how it was fixed
+      (2026-09-28 refresh).
+    </p>
+    <div class="hist-grid">
+      
+        <article class="hist-card">
+          <h3>onarresidence.gr</h3>
+          <p><strong>Why it was blocked</strong><br />Initial scrape failed (logged as HTTP 500 / unreachable, 2026-09-14). Later bare probes also returned HTTP 406 Not Acceptable without a browser Accept header (origin ModSecurity / Apache).</p>
+          <p><strong>Resolution</strong><br />Customer fixed the live site. Rescraped 2026-09-28 with browser UA + Accept. GitHub + static-forms wired. CF Pages live: https://onarresidence-gr.pages.dev</p>
+        </article>
+        <article class="hist-card">
+          <h3>kipivillage.com</h3>
+          <p><strong>Why it was blocked</strong><br />Customer reported site problems (content/hosting). Bare curl probes also hit HTTP 406 without Accept. Needed a fresh scrape after their fix.</p>
+          <p><strong>Resolution</strong><br />Customer fixed the live site. Refresh-scraped 2026-09-28 with browser UA + Accept; pushed to existing GitHub/Pages.</p>
+        </article>
+        <article class="hist-card">
+          <h3>estiasiscatering.com</h3>
+          <p><strong>Why it was blocked</strong><br />Initial scrape blocked with HTTP 403. Apex A pointed at Newfold edge 66.235.200.146 which served a Cloudflare Managed Challenge (cf-mitigated: challenge, “Just a moment…”), not the WordPress origin.</p>
+          <p><strong>Resolution</strong><br />Scraped via Bluehost origin 50.87.253.107 (hosts override). CF A record for apex updated to that origin (DNS-only). Public site now HTTP 200 with a normal browser Accept. GitHub + static-forms wired. CF Pages live: https://estiasiscatering-com.pages.dev</p>
+        </article>
+    </div>
+    <h3 class="subhead">Still blocked / pending</h3>
+    <ul class="plain-list">
+      <li>None for scrape.</li>
+      
+    </ul>
+    <h3 class="subhead">Removed from migration (2026-09-28)</h3>
+    <ul class="plain-list">
+      <li><strong>artinaoliveoil.com</strong> — Removed from migration list (2026-09-28); was Bluehost NS / not on our CF.</li><li><strong>liotrivizakynthos.gr</strong> — Removed from migration list (2026-09-28); scrape unreachable HTTP 403.</li><li><strong>voutosdentalclinic.gr</strong> — Removed from migration list (2026-09-28) per customer.</li><li><strong>leedas-villas.com</strong> — Removed from migration list (2026-09-28) per customer.</li><li><strong>zakynthosactivities.com</strong> — Removed from migration list (2026-09-28); scrape DNS/timeout.</li><li><strong>kanelastudios.com</strong> — Removed from migration list (2026-09-28) per customer.</li><li><strong>webcorp.gr</strong> — Removed from site migration list (2026-09-28); was unreachable HTTP 503. Still used as central SMTP From domain (forms@webcorp.gr).</li><li><strong>alkimachos.gr</strong> — Removed from migration list (2026-09-28) per customer.</li>
+    </ul>
+  </section>
+
+  <section id="qa-fixes" aria-labelledby="qa-title">
+    <h2 id="qa-title">Static QA fixes (2026-10-03)</h2>
+    <p class="section-lede">
+      Post-scrape polish before DNS cutover. Hover or expand the <strong>QA</strong> badge
+      in the sites table for the same detail.
+    </p>
+    <div class="hist-grid">
+      
+        <article class="hist-card">
+          <h3>familymarketzante.com</h3>
+          <p>EWWW emptied logo/service-tile image srcs (SVG placeholders). Restored real upload paths; redeployed Pages.</p>
+        </article>
+        <article class="hist-card">
+          <h3>galasvilla.gr</h3>
+          <p>EWWW emptied header/footer logos and villa/about images. Restored real upload paths; redeployed Pages.</p>
+        </article>
+        <article class="hist-card">
+          <h3>gkalogerias.gr</h3>
+          <p>EWWW emptied image data-src/srcset; Elementor section backgrounds rely on post CSS. Delazified imgs; confirmed CSS bg assets on Pages.</p>
+        </article>
+        <article class="hist-card">
+          <h3>kipivillage.com</h3>
+          <p>Elementor gallery lightbox failed: missing js/chunks/lightbox-lightbox.min.js (soft-404 HTML). Added chunk; galleries open on Pages.</p>
+        </article>
+        <article class="hist-card">
+          <h3>mtidesign.gr</h3>
+          <p>Project photo galleries blank: missing Elementor Pro webpack bundle gallery.*.bundle.min.js so masonry never init (height 0). Bundle + lightbox chunk added.</p>
+        </article>
+        <article class="hist-card">
+          <h3>perlabeachvilla.com</h3>
+          <p>EWWW emptied data-src/data-srcset (blank photos); EWWW/Elementor CSS forced background-image:none until lazyload. Restored live image map, removed killer CSS, unlocked e-con BG lazyload, added lightbox chunk.</p>
+        </article>
+        <article class="hist-card">
+          <h3>stravopodis.gr</h3>
+          <p>Hero Elementor background slideshow: 4/6 slide images missing from scrape (soft-404). Re-fetched images; unlocked e-con background lazyload.</p>
+        </article>
+        <article class="hist-card">
+          <h3>zanteskysuites.com</h3>
+          <p>Accommodation counters stuck at from-value: missing Elementor webpack bundle counter.*.bundle.min.js (chunk 457). Bundle + chunks/counter.min.js added.</p>
+        </article>
+        <article class="hist-card">
+          <h3>zoupanou.gr</h3>
+          <p>Hero background slideshow: 3/5 images missing; e-con lazyload hid backgrounds. Re-fetched images; unlocked BG lazyload.</p>
+        </article>
+        <article class="hist-card">
+          <h3>albaalmare.com</h3>
+          <p>Internal links used SEO soft-404 paths like index.html%3Fp=N.html. Rewrote ?p= links to pretty static paths.</p>
+        </article>
+    </div>
+  </section>
+
+
+  <section id="sites" aria-labelledby="sites-title">
+    <h2 id="sites-title">Sites by phase</h2>
+    <p class="section-lede">
+      Preview opens the Cloudflare Pages URL (not the final custom domain until cutover).
+      Tap a <strong>blocked</strong> / <strong>pending</strong> badge, scrape <strong>done · was blocked</strong>,
+      or a <strong>QA done</strong> badge for hover/expand detail.
+    </p>
+    
+    <h3 class="phase-head">Phase 1 — cutover first (21)</h3>
+    <p class="section-lede">Active cutover batch. DNS switch and final checks prioritize these domains.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Domain</th>
+            <th>Scrape</th>
+            <th>Pages</th>
+            <th>Form</th>
+            <th>HTML</th>
+            <th>Cutover</th>
+            <th>QA</th>
+            <th>Form ID</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td class="num">1</td>
+              <td class="domain"><strong>albaalmare.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Internal links used SEO soft-404 paths like index.html%3Fp=N.html. Rewrote ?p= links to pretty static paths.">done</summary><p class="why-body">Internal links used SEO soft-404 paths like index.html%3Fp=N.html. Rewrote ?p= links to pretty static paths.</p></details></td>
+              <td class="mono">F-9qiaCA</td>
+              <td class="actions"><a class="preview" href="https://albaalmare-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/albaalmare.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">2</td>
+              <td class="domain"><strong>casaarmoniazakynthos.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">jlWjWLyC</td>
+              <td class="actions"><a class="preview" href="https://casaarmoniazakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/casaarmoniazakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">3</td>
+              <td class="domain"><strong>dianaparasxi.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">N8RPp-Pd</td>
+              <td class="actions"><a class="preview" href="https://dianaparasxi-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/dianaparasxi.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">4</td>
+              <td class="domain"><strong>estiasiscatering.com</strong></td>
+              <td><details class="why"><summary class="badge badge-done" title="Was blocked: Initial scrape blocked with HTTP 403. Apex A pointed at Newfold edge 66.235.200.146 which served a Cloudflare Managed Challenge (cf-mitigated: challenge, “Just a moment…”), not the WordPress origin. → Fixed: Scraped via Bluehost origin 50.87.253.107 (hosts override). CF A record for apex updated to that origin (DNS-only). Public site now HTTP 200 with a normal browser Accept. GitHub + static-forms wired. CF Pages live: https://estiasiscatering-com.pages.dev">done · was blocked</summary><p class="why-body">Was blocked: Initial scrape blocked with HTTP 403. Apex A pointed at Newfold edge 66.235.200.146 which served a Cloudflare Managed Challenge (cf-mitigated: challenge, “Just a moment…”), not the WordPress origin. → Fixed: Scraped via Bluehost origin 50.87.253.107 (hosts override). CF A record for apex updated to that origin (DNS-only). Public site now HTTP 200 with a normal browser Accept. GitHub + static-forms wired. CF Pages live: https://estiasiscatering-com.pages.dev</p></details></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">NORDb4vc</td>
+              <td class="actions"><a class="preview" href="https://estiasiscatering-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/estiasiscatering.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">5</td>
+              <td class="domain"><strong>familymarketzante.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="EWWW emptied logo/service-tile image srcs (SVG placeholders). Restored real upload paths; redeployed Pages.">done</summary><p class="why-body">EWWW emptied logo/service-tile image srcs (SVG placeholders). Restored real upload paths; redeployed Pages.</p></details></td>
+              <td class="mono">RG9ziKL1</td>
+              <td class="actions"><a class="preview" href="https://familymarketzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/familymarketzante.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">6</td>
+              <td class="domain"><strong>galasvilla.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="EWWW emptied header/footer logos and villa/about images. Restored real upload paths; redeployed Pages.">done</summary><p class="why-body">EWWW emptied header/footer logos and villa/about images. Restored real upload paths; redeployed Pages.</p></details></td>
+              <td class="mono">lUKa6hIs</td>
+              <td class="actions"><a class="preview" href="https://galasvilla-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/galasvilla.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">7</td>
+              <td class="domain"><strong>gkalogerias.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="EWWW emptied image data-src/srcset; Elementor section backgrounds rely on post CSS. Delazified imgs; confirmed CSS bg assets on Pages.">done</summary><p class="why-body">EWWW emptied image data-src/srcset; Elementor section backgrounds rely on post CSS. Delazified imgs; confirmed CSS bg assets on Pages.</p></details></td>
+              <td class="mono">HUWv_CXf</td>
+              <td class="actions"><a class="preview" href="https://gkalogerias-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/gkalogerias.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">8</td>
+              <td class="domain"><strong>kipivillage.com</strong></td>
+              <td><details class="why"><summary class="badge badge-done" title="Was blocked: Customer reported site problems (content/hosting). Bare curl probes also hit HTTP 406 without Accept. Needed a fresh scrape after their fix. → Fixed: Customer fixed the live site. Refresh-scraped 2026-09-28 with browser UA + Accept; pushed to existing GitHub/Pages.">done · was blocked</summary><p class="why-body">Was blocked: Customer reported site problems (content/hosting). Bare curl probes also hit HTTP 406 without Accept. Needed a fresh scrape after their fix. → Fixed: Customer fixed the live site. Refresh-scraped 2026-09-28 with browser UA + Accept; pushed to existing GitHub/Pages.</p></details></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Elementor gallery lightbox failed: missing js/chunks/lightbox-lightbox.min.js (soft-404 HTML). Added chunk; galleries open on Pages.">done</summary><p class="why-body">Elementor gallery lightbox failed: missing js/chunks/lightbox-lightbox.min.js (soft-404 HTML). Added chunk; galleries open on Pages.</p></details></td>
+              <td class="mono">Fifj5N7V</td>
+              <td class="actions"><a class="preview" href="https://kipivillage-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/kipivillage.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">9</td>
+              <td class="domain"><strong>marrymeinzante.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">GkIs-Ebt</td>
+              <td class="actions"><a class="preview" href="https://marrymeinzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/marrymeinzante.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">10</td>
+              <td class="domain"><strong>milkhoneyresidence.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">NWVE_uVg</td>
+              <td class="actions"><a class="preview" href="https://milkhoneyresidence-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/milkhoneyresidence.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">11</td>
+              <td class="domain"><strong>movida.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">NDM9RdeG</td>
+              <td class="actions"><a class="preview" href="https://movida-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/movida.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">12</td>
+              <td class="domain"><strong>mtidesign.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Project photo galleries blank: missing Elementor Pro webpack bundle gallery.*.bundle.min.js so masonry never init (height 0). Bundle + lightbox chunk added.">done</summary><p class="why-body">Project photo galleries blank: missing Elementor Pro webpack bundle gallery.*.bundle.min.js so masonry never init (height 0). Bundle + lightbox chunk added.</p></details></td>
+              <td class="mono">V6p1OX8X</td>
+              <td class="actions"><a class="preview" href="https://mtidesign-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/mtidesign.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">13</td>
+              <td class="domain"><strong>onarresidence.gr</strong></td>
+              <td><details class="why"><summary class="badge badge-done" title="Was blocked: Initial scrape failed (logged as HTTP 500 / unreachable, 2026-09-14). Later bare probes also returned HTTP 406 Not Acceptable without a browser Accept header (origin ModSecurity / Apache). → Fixed: Customer fixed the live site. Rescraped 2026-09-28 with browser UA + Accept. GitHub + static-forms wired. CF Pages live: https://onarresidence-gr.pages.dev">done · was blocked</summary><p class="why-body">Was blocked: Initial scrape failed (logged as HTTP 500 / unreachable, 2026-09-14). Later bare probes also returned HTTP 406 Not Acceptable without a browser Accept header (origin ModSecurity / Apache). → Fixed: Customer fixed the live site. Rescraped 2026-09-28 with browser UA + Accept. GitHub + static-forms wired. CF Pages live: https://onarresidence-gr.pages.dev</p></details></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">N5Cavj-O</td>
+              <td class="actions"><a class="preview" href="https://onarresidence-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/onarresidence.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">14</td>
+              <td class="domain"><strong>perlabeachvilla.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="EWWW emptied data-src/data-srcset (blank photos); EWWW/Elementor CSS forced background-image:none until lazyload. Restored live image map, removed killer CSS, unlocked e-con BG lazyload, added lightbox chunk.">done</summary><p class="why-body">EWWW emptied data-src/data-srcset (blank photos); EWWW/Elementor CSS forced background-image:none until lazyload. Restored live image map, removed killer CSS, unlocked e-con BG lazyload, added lightbox chunk.</p></details></td>
+              <td class="mono">QMGLGQjF</td>
+              <td class="actions"><a class="preview" href="https://perlabeachvilla-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/perlabeachvilla.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">15</td>
+              <td class="domain"><strong>roulagouskou.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">3zVp5NnR</td>
+              <td class="actions"><a class="preview" href="https://roulagouskou-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/roulagouskou.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">16</td>
+              <td class="domain"><strong>stravopodis.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Hero Elementor background slideshow: 4/6 slide images missing from scrape (soft-404). Re-fetched images; unlocked e-con background lazyload.">done</summary><p class="why-body">Hero Elementor background slideshow: 4/6 slide images missing from scrape (soft-404). Re-fetched images; unlocked e-con background lazyload.</p></details></td>
+              <td class="mono">nh3Cubiw</td>
+              <td class="actions"><a class="preview" href="https://stravopodis-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/stravopodis.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">17</td>
+              <td class="domain"><strong>varrestennisclub.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">xHC5nWpk</td>
+              <td class="actions"><a class="preview" href="https://varrestennisclub-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/varrestennisclub.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">18</td>
+              <td class="domain"><strong>windmillrestovasilikos.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">mh00zOvy</td>
+              <td class="actions"><a class="preview" href="https://windmillrestovasilikos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/windmillrestovasilikos.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">19</td>
+              <td class="domain"><strong>yakinthosflowers.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">ZJ22Lp4B</td>
+              <td class="actions"><a class="preview" href="https://yakinthosflowers-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/yakinthosflowers.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">20</td>
+              <td class="domain"><strong>zanteskysuites.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Accommodation counters stuck at from-value: missing Elementor webpack bundle counter.*.bundle.min.js (chunk 457). Bundle + chunks/counter.min.js added.">done</summary><p class="why-body">Accommodation counters stuck at from-value: missing Elementor webpack bundle counter.*.bundle.min.js (chunk 457). Bundle + chunks/counter.min.js added.</p></details></td>
+              <td class="mono">8N_abCl5</td>
+              <td class="actions"><a class="preview" href="https://zanteskysuites-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/zanteskysuites.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">21</td>
+              <td class="domain"><strong>zoupanou.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Hero background slideshow: 3/5 images missing; e-con lazyload hid backgrounds. Re-fetched images; unlocked BG lazyload.">done</summary><p class="why-body">Hero background slideshow: 3/5 images missing; e-con lazyload hid backgrounds. Re-fetched images; unlocked BG lazyload.</p></details></td>
+              <td class="mono">gln4tKsg</td>
+              <td class="actions"><a class="preview" href="https://zoupanou-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/zoupanou.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3 class="phase-head">Phase 2 — after Phase 1 (15)</h3>
+    <p class="section-lede">Same pipeline work continues, but DNS cutover waits until Phase 1 is done.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Domain</th>
+            <th>Scrape</th>
+            <th>Pages</th>
+            <th>Form</th>
+            <th>HTML</th>
+            <th>Cutover</th>
+            <th>QA</th>
+            <th>Form ID</th>
+            <th>Links</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td class="num">22</td>
+              <td class="domain"><strong>bluesea-kalyves.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">KQ_fedAV</td>
+              <td class="actions"><a class="preview" href="https://bluesea-kalyves-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/bluesea-kalyves.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">23</td>
+              <td class="domain"><strong>eliastudioszakynthos.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">dpv8gnzQ</td>
+              <td class="actions"><a class="preview" href="https://eliastudioszakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/eliastudioszakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">24</td>
+              <td class="domain"><strong>gounelis.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">kwNHwGO5</td>
+              <td class="actions"><a class="preview" href="https://gounelis-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/gounelis.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">25</td>
+              <td class="domain"><strong>islandretreats.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">o-iILKZ7</td>
+              <td class="actions"><a class="preview" href="https://islandretreats-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/islandretreats.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">26</td>
+              <td class="domain"><strong>ixoxromazakynthos.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">D7R0PGQs</td>
+              <td class="actions"><a class="preview" href="https://ixoxromazakynthos-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/ixoxromazakynthos.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">27</td>
+              <td class="domain"><strong>loukouloschania.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">d0kDRfUt</td>
+              <td class="actions"><a class="preview" href="https://loukouloschania-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/loukouloschania.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">28</td>
+              <td class="domain"><strong>magnoliazakynthos.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">Jp3xUooR</td>
+              <td class="actions"><a class="preview" href="https://magnoliazakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/magnoliazakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">29</td>
+              <td class="domain"><strong>mareasuiteszante.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">fwaWVHrd</td>
+              <td class="actions"><a class="preview" href="https://mareasuiteszante-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/mareasuiteszante.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">30</td>
+              <td class="domain"><strong>myprivatekitchen.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">-MLQxHAM</td>
+              <td class="actions"><a class="preview" href="https://myprivatekitchen-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/myprivatekitchen.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">31</td>
+              <td class="domain"><strong>sanleonzante.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">8o7UyVcT</td>
+              <td class="actions"><a class="preview" href="https://sanleonzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/sanleonzante.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">32</td>
+              <td class="domain"><strong>soleilvillas.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">TgtMP2iU</td>
+              <td class="actions"><a class="preview" href="https://soleilvillas-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/soleilvillas.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">33</td>
+              <td class="domain"><strong>villa-phoenix.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">Hqmv2-mG</td>
+              <td class="actions"><a class="preview" href="https://villa-phoenix-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/villa-phoenix.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">34</td>
+              <td class="domain"><strong>albadorozante.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">lR4kGCpY</td>
+              <td class="actions"><a class="preview" href="https://albadorozante-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/albadorozante.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">35</td>
+              <td class="domain"><strong>delphisdigital.com</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">Z3D57tC9</td>
+              <td class="actions"><a class="preview" href="https://delphisdigital-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/delphisdigital.com" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+            <tr>
+              <td class="num">36</td>
+              <td class="domain"><strong>deckboatrentals.gr</strong></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-done">done</span></td>
+              <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
+              <td class="mono">PGd9F_sN</td>
+              <td class="actions"><a class="preview" href="https://deckboatrentals-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/deckboatrentals.gr" target="_blank" rel="noopener">GitHub</a></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    Regenerated by <code>scripts/export-migration-sheet.py</code> ·
+    CSV mirror: <code>logs/migration-progress.csv</code>
+  </footer>
+</body>
+</html>
