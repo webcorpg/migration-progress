@@ -419,7 +419,7 @@
         <a class="cta" href="#sites">View all sites ↓</a>
         <a class="cta ghost" href="windows/clone-all-sites.zip">Windows clone script</a>
       </div>
-      <p class="meta">Updated 2026-09-28 17:54 UTC · From mail: forms@webcorp.gr</p>
+      <p class="meta">Updated 2026-10-03 11:32 UTC · From mail: forms@webcorp.gr</p>
     </div>
   </header>
 
@@ -432,6 +432,7 @@
       <div class="stat"><b>35</b><span>CF DNS zones</span></div>
       <div class="stat"><b>36</b><span>Forms created</span></div>
       <div class="stat"><b>36</b><span>Forms in HTML</span></div>
+      <div class="stat"><b>10</b><span>QA fixes</span></div>
       <div class="stat"><b>0</b><span>DNS cutover</span></div>
     </div>
   </section>
@@ -472,12 +473,64 @@
     </ul>
   </section>
 
+  <section id="qa-fixes" aria-labelledby="qa-title">
+    <h2 id="qa-title">Static QA fixes (2026-10-03)</h2>
+    <p class="section-lede">
+      Post-scrape polish before DNS cutover. Hover or expand the <strong>QA</strong> badge
+      in the sites table for the same detail.
+    </p>
+    <div class="hist-grid">
+      
+        <article class="hist-card">
+          <h3>familymarketzante.com</h3>
+          <p>EWWW emptied logo/service-tile image srcs (SVG placeholders). Restored real upload paths; redeployed Pages.</p>
+        </article>
+        <article class="hist-card">
+          <h3>galasvilla.gr</h3>
+          <p>EWWW emptied header/footer logos and villa/about images. Restored real upload paths; redeployed Pages.</p>
+        </article>
+        <article class="hist-card">
+          <h3>gkalogerias.gr</h3>
+          <p>EWWW emptied image data-src/srcset; Elementor section backgrounds rely on post CSS. Delazified imgs; confirmed CSS bg assets on Pages.</p>
+        </article>
+        <article class="hist-card">
+          <h3>kipivillage.com</h3>
+          <p>Elementor gallery lightbox failed: missing js/chunks/lightbox-lightbox.min.js (soft-404 HTML). Added chunk; galleries open on Pages.</p>
+        </article>
+        <article class="hist-card">
+          <h3>mtidesign.gr</h3>
+          <p>Project photo galleries blank: missing Elementor Pro webpack bundle gallery.*.bundle.min.js so masonry never init (height 0). Bundle + lightbox chunk added.</p>
+        </article>
+        <article class="hist-card">
+          <h3>perlabeachvilla.com</h3>
+          <p>EWWW emptied data-src/data-srcset (blank photos); EWWW/Elementor CSS forced background-image:none until lazyload. Restored live image map, removed killer CSS, unlocked e-con BG lazyload, added lightbox chunk.</p>
+        </article>
+        <article class="hist-card">
+          <h3>stravopodis.gr</h3>
+          <p>Hero Elementor background slideshow: 4/6 slide images missing from scrape (soft-404). Re-fetched images; unlocked e-con background lazyload.</p>
+        </article>
+        <article class="hist-card">
+          <h3>zanteskysuites.com</h3>
+          <p>Accommodation counters stuck at from-value: missing Elementor webpack bundle counter.*.bundle.min.js (chunk 457). Bundle + chunks/counter.min.js added.</p>
+        </article>
+        <article class="hist-card">
+          <h3>zoupanou.gr</h3>
+          <p>Hero background slideshow: 3/5 images missing; e-con lazyload hid backgrounds. Re-fetched images; unlocked BG lazyload.</p>
+        </article>
+        <article class="hist-card">
+          <h3>albaalmare.com</h3>
+          <p>Internal links used SEO soft-404 paths like index.html%3Fp=N.html. Rewrote ?p= links to pretty static paths.</p>
+        </article>
+    </div>
+  </section>
+
 
   <section id="sites" aria-labelledby="sites-title">
     <h2 id="sites-title">Sites by phase</h2>
     <p class="section-lede">
       Preview opens the Cloudflare Pages URL (not the final custom domain until cutover).
-      Tap a <strong>blocked</strong> / <strong>pending</strong> badge, or scrape <strong>done · was blocked</strong>, for the reason.
+      Tap a <strong>blocked</strong> / <strong>pending</strong> badge, scrape <strong>done · was blocked</strong>,
+      or a <strong>QA done</strong> badge for hover/expand detail.
     </p>
     
     <h3 class="phase-head">Phase 1 — cutover first (21)</h3>
@@ -493,6 +546,7 @@
             <th>Form</th>
             <th>HTML</th>
             <th>Cutover</th>
+            <th>QA</th>
             <th>Form ID</th>
             <th>Links</th>
           </tr>
@@ -507,6 +561,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Internal links used SEO soft-404 paths like index.html%3Fp=N.html. Rewrote ?p= links to pretty static paths.">done</summary><p class="why-body">Internal links used SEO soft-404 paths like index.html%3Fp=N.html. Rewrote ?p= links to pretty static paths.</p></details></td>
               <td class="mono">F-9qiaCA</td>
               <td class="actions"><a class="preview" href="https://albaalmare-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/albaalmare.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -518,6 +573,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">jlWjWLyC</td>
               <td class="actions"><a class="preview" href="https://casaarmoniazakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/casaarmoniazakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -529,6 +585,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">N8RPp-Pd</td>
               <td class="actions"><a class="preview" href="https://dianaparasxi-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/dianaparasxi.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -540,6 +597,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">NORDb4vc</td>
               <td class="actions"><a class="preview" href="https://estiasiscatering-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/estiasiscatering.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -551,6 +609,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="EWWW emptied logo/service-tile image srcs (SVG placeholders). Restored real upload paths; redeployed Pages.">done</summary><p class="why-body">EWWW emptied logo/service-tile image srcs (SVG placeholders). Restored real upload paths; redeployed Pages.</p></details></td>
               <td class="mono">RG9ziKL1</td>
               <td class="actions"><a class="preview" href="https://familymarketzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/familymarketzante.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -562,6 +621,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="EWWW emptied header/footer logos and villa/about images. Restored real upload paths; redeployed Pages.">done</summary><p class="why-body">EWWW emptied header/footer logos and villa/about images. Restored real upload paths; redeployed Pages.</p></details></td>
               <td class="mono">lUKa6hIs</td>
               <td class="actions"><a class="preview" href="https://galasvilla-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/galasvilla.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -573,6 +633,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="EWWW emptied image data-src/srcset; Elementor section backgrounds rely on post CSS. Delazified imgs; confirmed CSS bg assets on Pages.">done</summary><p class="why-body">EWWW emptied image data-src/srcset; Elementor section backgrounds rely on post CSS. Delazified imgs; confirmed CSS bg assets on Pages.</p></details></td>
               <td class="mono">HUWv_CXf</td>
               <td class="actions"><a class="preview" href="https://gkalogerias-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/gkalogerias.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -584,6 +645,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Elementor gallery lightbox failed: missing js/chunks/lightbox-lightbox.min.js (soft-404 HTML). Added chunk; galleries open on Pages.">done</summary><p class="why-body">Elementor gallery lightbox failed: missing js/chunks/lightbox-lightbox.min.js (soft-404 HTML). Added chunk; galleries open on Pages.</p></details></td>
               <td class="mono">Fifj5N7V</td>
               <td class="actions"><a class="preview" href="https://kipivillage-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/kipivillage.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -595,6 +657,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">GkIs-Ebt</td>
               <td class="actions"><a class="preview" href="https://marrymeinzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/marrymeinzante.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -606,6 +669,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">NWVE_uVg</td>
               <td class="actions"><a class="preview" href="https://milkhoneyresidence-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/milkhoneyresidence.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -617,6 +681,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">NDM9RdeG</td>
               <td class="actions"><a class="preview" href="https://movida-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/movida.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -628,6 +693,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-blocked" title="Cannot cut over DNS until zone is on our Cloudflare account (Bluehost NS — not on our CF)">blocked</summary><p class="why-body">Cannot cut over DNS until zone is on our Cloudflare account (Bluehost NS — not on our CF)</p></details></td>
+              <td><details class="why"><summary class="badge badge-done" title="Project photo galleries blank: missing Elementor Pro webpack bundle gallery.*.bundle.min.js so masonry never init (height 0). Bundle + lightbox chunk added.">done</summary><p class="why-body">Project photo galleries blank: missing Elementor Pro webpack bundle gallery.*.bundle.min.js so masonry never init (height 0). Bundle + lightbox chunk added.</p></details></td>
               <td class="mono">V6p1OX8X</td>
               <td class="actions"><a class="preview" href="https://mtidesign-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/mtidesign.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -639,6 +705,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">N5Cavj-O</td>
               <td class="actions"><a class="preview" href="https://onarresidence-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/onarresidence.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -650,6 +717,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="EWWW emptied data-src/data-srcset (blank photos); EWWW/Elementor CSS forced background-image:none until lazyload. Restored live image map, removed killer CSS, unlocked e-con BG lazyload, added lightbox chunk.">done</summary><p class="why-body">EWWW emptied data-src/data-srcset (blank photos); EWWW/Elementor CSS forced background-image:none until lazyload. Restored live image map, removed killer CSS, unlocked e-con BG lazyload, added lightbox chunk.</p></details></td>
               <td class="mono">QMGLGQjF</td>
               <td class="actions"><a class="preview" href="https://perlabeachvilla-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/perlabeachvilla.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -661,6 +729,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">3zVp5NnR</td>
               <td class="actions"><a class="preview" href="https://roulagouskou-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/roulagouskou.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -672,6 +741,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Hero Elementor background slideshow: 4/6 slide images missing from scrape (soft-404). Re-fetched images; unlocked e-con background lazyload.">done</summary><p class="why-body">Hero Elementor background slideshow: 4/6 slide images missing from scrape (soft-404). Re-fetched images; unlocked e-con background lazyload.</p></details></td>
               <td class="mono">nh3Cubiw</td>
               <td class="actions"><a class="preview" href="https://stravopodis-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/stravopodis.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -683,6 +753,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">xHC5nWpk</td>
               <td class="actions"><a class="preview" href="https://varrestennisclub-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/varrestennisclub.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -694,6 +765,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">mh00zOvy</td>
               <td class="actions"><a class="preview" href="https://windmillrestovasilikos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/windmillrestovasilikos.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -705,6 +777,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">ZJ22Lp4B</td>
               <td class="actions"><a class="preview" href="https://yakinthosflowers-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/yakinthosflowers.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -716,6 +789,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Accommodation counters stuck at from-value: missing Elementor webpack bundle counter.*.bundle.min.js (chunk 457). Bundle + chunks/counter.min.js added.">done</summary><p class="why-body">Accommodation counters stuck at from-value: missing Elementor webpack bundle counter.*.bundle.min.js (chunk 457). Bundle + chunks/counter.min.js added.</p></details></td>
               <td class="mono">8N_abCl5</td>
               <td class="actions"><a class="preview" href="https://zanteskysuites-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/zanteskysuites.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -727,6 +801,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-done" title="Hero background slideshow: 3/5 images missing; e-con lazyload hid backgrounds. Re-fetched images; unlocked BG lazyload.">done</summary><p class="why-body">Hero background slideshow: 3/5 images missing; e-con lazyload hid backgrounds. Re-fetched images; unlocked BG lazyload.</p></details></td>
               <td class="mono">gln4tKsg</td>
               <td class="actions"><a class="preview" href="https://zoupanou-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/zoupanou.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -746,6 +821,7 @@
             <th>Form</th>
             <th>HTML</th>
             <th>Cutover</th>
+            <th>QA</th>
             <th>Form ID</th>
             <th>Links</th>
           </tr>
@@ -760,6 +836,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">KQ_fedAV</td>
               <td class="actions"><a class="preview" href="https://bluesea-kalyves-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/bluesea-kalyves.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -771,6 +848,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">dpv8gnzQ</td>
               <td class="actions"><a class="preview" href="https://eliastudioszakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/eliastudioszakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -782,6 +860,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">kwNHwGO5</td>
               <td class="actions"><a class="preview" href="https://gounelis-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/gounelis.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -793,6 +872,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">o-iILKZ7</td>
               <td class="actions"><a class="preview" href="https://islandretreats-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/islandretreats.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -804,6 +884,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">D7R0PGQs</td>
               <td class="actions"><a class="preview" href="https://ixoxromazakynthos-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/ixoxromazakynthos.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -815,6 +896,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">d0kDRfUt</td>
               <td class="actions"><a class="preview" href="https://loukouloschania-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/loukouloschania.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -826,6 +908,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">Jp3xUooR</td>
               <td class="actions"><a class="preview" href="https://magnoliazakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/magnoliazakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -837,6 +920,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">fwaWVHrd</td>
               <td class="actions"><a class="preview" href="https://mareasuiteszante-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/mareasuiteszante.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -848,6 +932,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">-MLQxHAM</td>
               <td class="actions"><a class="preview" href="https://myprivatekitchen-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/myprivatekitchen.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -859,6 +944,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">8o7UyVcT</td>
               <td class="actions"><a class="preview" href="https://sanleonzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/sanleonzante.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -870,6 +956,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">TgtMP2iU</td>
               <td class="actions"><a class="preview" href="https://soleilvillas-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/soleilvillas.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -881,6 +968,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">Hqmv2-mG</td>
               <td class="actions"><a class="preview" href="https://villa-phoenix-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/villa-phoenix.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -892,6 +980,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">lR4kGCpY</td>
               <td class="actions"><a class="preview" href="https://albadorozante-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/albadorozante.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -903,6 +992,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">Z3D57tC9</td>
               <td class="actions"><a class="preview" href="https://delphisdigital-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/delphisdigital.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
@@ -914,6 +1004,7 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">PGd9F_sN</td>
               <td class="actions"><a class="preview" href="https://deckboatrentals-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/deckboatrentals.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
