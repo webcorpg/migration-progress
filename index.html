@@ -419,7 +419,7 @@
         <a class="cta" href="#sites">View all sites ↓</a>
         <a class="cta ghost" href="windows/clone-all-sites.zip">Windows clone script</a>
       </div>
-      <p class="meta">Updated 2026-10-05 16:59 UTC · From mail: forms@webcorp.gr</p>
+      <p class="meta">Updated 2026-10-05 17:07 UTC · From mail: forms@webcorp.gr</p>
     </div>
   </header>
 
@@ -434,6 +434,7 @@
       <div class="stat"><b>36</b><span>Forms in HTML</span></div>
       <div class="stat"><b>10</b><span>QA fixes</span></div>
       <div class="stat"><b>21</b><span>DNS cutover</span></div>
+      <div class="stat"><b>0</b><span>MX → CF Email</span></div>
     </div>
   </section>
 
@@ -528,13 +529,14 @@
   <section id="sites" aria-labelledby="sites-title">
     <h2 id="sites-title">Sites by phase</h2>
     <p class="section-lede">
-      Preview opens the Cloudflare Pages URL (not the final custom domain until cutover).
-      Tap a <strong>blocked</strong> / <strong>pending</strong> badge, scrape <strong>done · was blocked</strong>,
-      or a <strong>QA done</strong> badge for hover/expand detail.
+      Cut-over domains link to the live site (<code>https://domain/</code>).
+      <strong>Site</strong> opens the custom domain; <strong>pages.dev</strong> is the Pages preview.
+      <strong>MX</strong> tracks the later switch to Cloudflare Email Routing (still pending).
+      Tap badges for hover/expand detail.
     </p>
     
     <h3 class="phase-head">Phase 1 — cutover first (21)</h3>
-    <p class="section-lede">Active cutover batch. DNS switch and final checks prioritize these domains.</p>
+    <p class="section-lede">Active cutover batch. Domain name + Site open the live custom domain after DNS cutover.</p>
     <div class="table-wrap">
       <table>
         <thead>
@@ -546,6 +548,7 @@
             <th>Form</th>
             <th>HTML</th>
             <th>Cutover</th>
+            <th>MX</th>
             <th>QA</th>
             <th>Form ID</th>
             <th>Links</th>
@@ -555,255 +558,276 @@
           
             <tr>
               <td class="num">1</td>
-              <td class="domain"><strong>albaalmare.com</strong></td>
+              <td class="domain"><a class="live" href="https://albaalmare.com/" target="_blank" rel="noopener" title="Open live site"><strong>albaalmare.com</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → albaalmare-com.pages.dev (2026-10-05T16:35:47Z)">done</summary><p class="why-body">Pages custom domains apex+www → albaalmare-com.pages.dev (2026-10-05T16:35:47Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="Internal links used SEO soft-404 paths like index.html%3Fp=N.html. Rewrote ?p= links to pretty static paths.">done</summary><p class="why-body">Internal links used SEO soft-404 paths like index.html%3Fp=N.html. Rewrote ?p= links to pretty static paths.</p></details></td>
               <td class="mono">F-9qiaCA</td>
-              <td class="actions"><a class="preview" href="https://albaalmare-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/albaalmare.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://albaalmare.com/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://albaalmare-com.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/albaalmare.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">2</td>
-              <td class="domain"><strong>casaarmoniazakynthos.com</strong></td>
+              <td class="domain"><a class="live" href="https://casaarmoniazakynthos.com/" target="_blank" rel="noopener" title="Open live site"><strong>casaarmoniazakynthos.com</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → casaarmoniazakynthos-com.pages.dev (2026-10-05T16:37:27Z)">done</summary><p class="why-body">Pages custom domains apex+www → casaarmoniazakynthos-com.pages.dev (2026-10-05T16:37:27Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">jlWjWLyC</td>
-              <td class="actions"><a class="preview" href="https://casaarmoniazakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/casaarmoniazakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://casaarmoniazakynthos.com/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://casaarmoniazakynthos-com.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/casaarmoniazakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">3</td>
-              <td class="domain"><strong>dianaparasxi.gr</strong></td>
+              <td class="domain"><a class="live" href="https://dianaparasxi.gr/" target="_blank" rel="noopener" title="Open live site"><strong>dianaparasxi.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → dianaparasxi-gr.pages.dev (2026-10-05T16:38:41Z)">done</summary><p class="why-body">Pages custom domains apex+www → dianaparasxi-gr.pages.dev (2026-10-05T16:38:41Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">N8RPp-Pd</td>
-              <td class="actions"><a class="preview" href="https://dianaparasxi-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/dianaparasxi.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://dianaparasxi.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://dianaparasxi-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/dianaparasxi.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">4</td>
-              <td class="domain"><strong>estiasiscatering.com</strong></td>
+              <td class="domain"><a class="live" href="https://estiasiscatering.com/" target="_blank" rel="noopener" title="Open live site"><strong>estiasiscatering.com</strong></a></td>
               <td><details class="why"><summary class="badge badge-done" title="Was blocked: Initial scrape blocked with HTTP 403. Apex A pointed at Newfold edge 66.235.200.146 which served a Cloudflare Managed Challenge (cf-mitigated: challenge, “Just a moment…”), not the WordPress origin. → Fixed: Scraped via Bluehost origin 50.87.253.107 (hosts override). CF A record for apex updated to that origin (DNS-only). Public site now HTTP 200 with a normal browser Accept. GitHub + static-forms wired. CF Pages live: https://estiasiscatering-com.pages.dev">done · was blocked</summary><p class="why-body">Was blocked: Initial scrape blocked with HTTP 403. Apex A pointed at Newfold edge 66.235.200.146 which served a Cloudflare Managed Challenge (cf-mitigated: challenge, “Just a moment…”), not the WordPress origin. → Fixed: Scraped via Bluehost origin 50.87.253.107 (hosts override). CF A record for apex updated to that origin (DNS-only). Public site now HTTP 200 with a normal browser Accept. GitHub + static-forms wired. CF Pages live: https://estiasiscatering-com.pages.dev</p></details></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → estiasiscatering-com.pages.dev (2026-10-05T16:38:59Z)">done</summary><p class="why-body">Pages custom domains apex+www → estiasiscatering-com.pages.dev (2026-10-05T16:38:59Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">NORDb4vc</td>
-              <td class="actions"><a class="preview" href="https://estiasiscatering-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/estiasiscatering.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://estiasiscatering.com/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://estiasiscatering-com.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/estiasiscatering.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">5</td>
-              <td class="domain"><strong>familymarketzante.com</strong></td>
+              <td class="domain"><a class="live" href="https://familymarketzante.com/" target="_blank" rel="noopener" title="Open live site"><strong>familymarketzante.com</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → familymarketzante-com.pages.dev (2026-10-05T16:40:24Z)">done</summary><p class="why-body">Pages custom domains apex+www → familymarketzante-com.pages.dev (2026-10-05T16:40:24Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="EWWW emptied logo/service-tile image srcs (SVG placeholders). Restored real upload paths; redeployed Pages.">done</summary><p class="why-body">EWWW emptied logo/service-tile image srcs (SVG placeholders). Restored real upload paths; redeployed Pages.</p></details></td>
               <td class="mono">RG9ziKL1</td>
-              <td class="actions"><a class="preview" href="https://familymarketzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/familymarketzante.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://familymarketzante.com/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://familymarketzante-com.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/familymarketzante.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">6</td>
-              <td class="domain"><strong>galasvilla.gr</strong></td>
+              <td class="domain"><a class="live" href="https://galasvilla.gr/" target="_blank" rel="noopener" title="Open live site"><strong>galasvilla.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → galasvilla-gr.pages.dev (2026-10-05T16:41:38Z)">done</summary><p class="why-body">Pages custom domains apex+www → galasvilla-gr.pages.dev (2026-10-05T16:41:38Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="EWWW emptied header/footer logos and villa/about images. Restored real upload paths; redeployed Pages.">done</summary><p class="why-body">EWWW emptied header/footer logos and villa/about images. Restored real upload paths; redeployed Pages.</p></details></td>
               <td class="mono">lUKa6hIs</td>
-              <td class="actions"><a class="preview" href="https://galasvilla-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/galasvilla.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://galasvilla.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://galasvilla-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/galasvilla.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">7</td>
-              <td class="domain"><strong>gkalogerias.gr</strong></td>
+              <td class="domain"><a class="live" href="https://gkalogerias.gr/" target="_blank" rel="noopener" title="Open live site"><strong>gkalogerias.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → gkalogerias-gr.pages.dev (2026-10-05T16:42:52Z)">done</summary><p class="why-body">Pages custom domains apex+www → gkalogerias-gr.pages.dev (2026-10-05T16:42:52Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="EWWW emptied image data-src/srcset; Elementor section backgrounds rely on post CSS. Delazified imgs; confirmed CSS bg assets on Pages.">done</summary><p class="why-body">EWWW emptied image data-src/srcset; Elementor section backgrounds rely on post CSS. Delazified imgs; confirmed CSS bg assets on Pages.</p></details></td>
               <td class="mono">HUWv_CXf</td>
-              <td class="actions"><a class="preview" href="https://gkalogerias-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/gkalogerias.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://gkalogerias.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://gkalogerias-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/gkalogerias.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">8</td>
-              <td class="domain"><strong>kipivillage.com</strong></td>
+              <td class="domain"><a class="live" href="https://kipivillage.com/" target="_blank" rel="noopener" title="Open live site"><strong>kipivillage.com</strong></a></td>
               <td><details class="why"><summary class="badge badge-done" title="Was blocked: Customer reported site problems (content/hosting). Bare curl probes also hit HTTP 406 without Accept. Needed a fresh scrape after their fix. → Fixed: Customer fixed the live site. Refresh-scraped 2026-09-28 with browser UA + Accept; pushed to existing GitHub/Pages.">done · was blocked</summary><p class="why-body">Was blocked: Customer reported site problems (content/hosting). Bare curl probes also hit HTTP 406 without Accept. Needed a fresh scrape after their fix. → Fixed: Customer fixed the live site. Refresh-scraped 2026-09-28 with browser UA + Accept; pushed to existing GitHub/Pages.</p></details></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → kipivillage-com.pages.dev (2026-10-05T16:43:11Z)">done</summary><p class="why-body">Pages custom domains apex+www → kipivillage-com.pages.dev (2026-10-05T16:43:11Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="Elementor gallery lightbox failed: missing js/chunks/lightbox-lightbox.min.js (soft-404 HTML). Added chunk; galleries open on Pages.">done</summary><p class="why-body">Elementor gallery lightbox failed: missing js/chunks/lightbox-lightbox.min.js (soft-404 HTML). Added chunk; galleries open on Pages.</p></details></td>
               <td class="mono">Fifj5N7V</td>
-              <td class="actions"><a class="preview" href="https://kipivillage-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/kipivillage.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://kipivillage.com/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://kipivillage-com.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/kipivillage.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">9</td>
-              <td class="domain"><strong>marrymeinzante.com</strong></td>
+              <td class="domain"><a class="live" href="https://marrymeinzante.com/" target="_blank" rel="noopener" title="Open live site"><strong>marrymeinzante.com</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → marrymeinzante-com.pages.dev (2026-10-05T16:44:24Z)">done</summary><p class="why-body">Pages custom domains apex+www → marrymeinzante-com.pages.dev (2026-10-05T16:44:24Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">GkIs-Ebt</td>
-              <td class="actions"><a class="preview" href="https://marrymeinzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/marrymeinzante.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://marrymeinzante.com/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://marrymeinzante-com.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/marrymeinzante.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">10</td>
-              <td class="domain"><strong>milkhoneyresidence.gr</strong></td>
+              <td class="domain"><a class="live" href="https://milkhoneyresidence.gr/" target="_blank" rel="noopener" title="Open live site"><strong>milkhoneyresidence.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → milkhoneyresidence-gr.pages.dev (2026-10-05T16:45:39Z)">done</summary><p class="why-body">Pages custom domains apex+www → milkhoneyresidence-gr.pages.dev (2026-10-05T16:45:39Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">NWVE_uVg</td>
-              <td class="actions"><a class="preview" href="https://milkhoneyresidence-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/milkhoneyresidence.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://milkhoneyresidence.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://milkhoneyresidence-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/milkhoneyresidence.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">11</td>
-              <td class="domain"><strong>movida.gr</strong></td>
+              <td class="domain"><a class="live" href="https://movida.gr/" target="_blank" rel="noopener" title="Open live site"><strong>movida.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → movida-gr.pages.dev (2026-10-05T16:47:01Z)">done</summary><p class="why-body">Pages custom domains apex+www → movida-gr.pages.dev (2026-10-05T16:47:01Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">NDM9RdeG</td>
-              <td class="actions"><a class="preview" href="https://movida-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/movida.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://movida.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://movida-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/movida.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">12</td>
-              <td class="domain"><strong>mtidesign.gr</strong></td>
+              <td class="domain"><a class="live" href="https://mtidesign.gr/" target="_blank" rel="noopener" title="Open live site"><strong>mtidesign.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → mtidesign-gr.pages.dev (2026-10-05T16:48:23Z)">done</summary><p class="why-body">Pages custom domains apex+www → mtidesign-gr.pages.dev (2026-10-05T16:48:23Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="Project photo galleries blank: missing Elementor Pro webpack bundle gallery.*.bundle.min.js so masonry never init (height 0). Bundle + lightbox chunk added.">done</summary><p class="why-body">Project photo galleries blank: missing Elementor Pro webpack bundle gallery.*.bundle.min.js so masonry never init (height 0). Bundle + lightbox chunk added.</p></details></td>
               <td class="mono">V6p1OX8X</td>
-              <td class="actions"><a class="preview" href="https://mtidesign-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/mtidesign.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://mtidesign.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://mtidesign-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/mtidesign.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">13</td>
-              <td class="domain"><strong>onarresidence.gr</strong></td>
+              <td class="domain"><a class="live" href="https://onarresidence.gr/" target="_blank" rel="noopener" title="Open live site"><strong>onarresidence.gr</strong></a></td>
               <td><details class="why"><summary class="badge badge-done" title="Was blocked: Initial scrape failed (logged as HTTP 500 / unreachable, 2026-09-14). Later bare probes also returned HTTP 406 Not Acceptable without a browser Accept header (origin ModSecurity / Apache). → Fixed: Customer fixed the live site. Rescraped 2026-09-28 with browser UA + Accept. GitHub + static-forms wired. CF Pages live: https://onarresidence-gr.pages.dev">done · was blocked</summary><p class="why-body">Was blocked: Initial scrape failed (logged as HTTP 500 / unreachable, 2026-09-14). Later bare probes also returned HTTP 406 Not Acceptable without a browser Accept header (origin ModSecurity / Apache). → Fixed: Customer fixed the live site. Rescraped 2026-09-28 with browser UA + Accept. GitHub + static-forms wired. CF Pages live: https://onarresidence-gr.pages.dev</p></details></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → onarresidence-gr.pages.dev (2026-10-05T16:49:37Z)">done</summary><p class="why-body">Pages custom domains apex+www → onarresidence-gr.pages.dev (2026-10-05T16:49:37Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">N5Cavj-O</td>
-              <td class="actions"><a class="preview" href="https://onarresidence-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/onarresidence.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://onarresidence.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://onarresidence-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/onarresidence.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">14</td>
-              <td class="domain"><strong>perlabeachvilla.com</strong></td>
+              <td class="domain"><a class="live" href="https://perlabeachvilla.com/" target="_blank" rel="noopener" title="Open live site"><strong>perlabeachvilla.com</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → perlabeachvilla-com.pages.dev (2026-10-05T16:51:02Z)">done</summary><p class="why-body">Pages custom domains apex+www → perlabeachvilla-com.pages.dev (2026-10-05T16:51:02Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="EWWW emptied data-src/data-srcset (blank photos); EWWW/Elementor CSS forced background-image:none until lazyload. Restored live image map, removed killer CSS, unlocked e-con BG lazyload, added lightbox chunk.">done</summary><p class="why-body">EWWW emptied data-src/data-srcset (blank photos); EWWW/Elementor CSS forced background-image:none until lazyload. Restored live image map, removed killer CSS, unlocked e-con BG lazyload, added lightbox chunk.</p></details></td>
               <td class="mono">QMGLGQjF</td>
-              <td class="actions"><a class="preview" href="https://perlabeachvilla-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/perlabeachvilla.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://perlabeachvilla.com/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://perlabeachvilla-com.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/perlabeachvilla.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">15</td>
-              <td class="domain"><strong>roulagouskou.gr</strong></td>
+              <td class="domain"><a class="live" href="https://roulagouskou.gr/" target="_blank" rel="noopener" title="Open live site"><strong>roulagouskou.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → roulagouskou-gr.pages.dev (2026-10-05T16:51:21Z)">done</summary><p class="why-body">Pages custom domains apex+www → roulagouskou-gr.pages.dev (2026-10-05T16:51:21Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">3zVp5NnR</td>
-              <td class="actions"><a class="preview" href="https://roulagouskou-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/roulagouskou.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://roulagouskou.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://roulagouskou-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/roulagouskou.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">16</td>
-              <td class="domain"><strong>stravopodis.gr</strong></td>
+              <td class="domain"><a class="live" href="https://stravopodis.gr/" target="_blank" rel="noopener" title="Open live site"><strong>stravopodis.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → stravopodis-gr.pages.dev (2026-10-05T16:52:42Z)">done</summary><p class="why-body">Pages custom domains apex+www → stravopodis-gr.pages.dev (2026-10-05T16:52:42Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="Hero Elementor background slideshow: 4/6 slide images missing from scrape (soft-404). Re-fetched images; unlocked e-con background lazyload.">done</summary><p class="why-body">Hero Elementor background slideshow: 4/6 slide images missing from scrape (soft-404). Re-fetched images; unlocked e-con background lazyload.</p></details></td>
               <td class="mono">nh3Cubiw</td>
-              <td class="actions"><a class="preview" href="https://stravopodis-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/stravopodis.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://stravopodis.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://stravopodis-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/stravopodis.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">17</td>
-              <td class="domain"><strong>varrestennisclub.gr</strong></td>
+              <td class="domain"><a class="live" href="https://varrestennisclub.gr/" target="_blank" rel="noopener" title="Open live site"><strong>varrestennisclub.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → varrestennisclub-gr.pages.dev (2026-10-05T16:54:06Z)">done</summary><p class="why-body">Pages custom domains apex+www → varrestennisclub-gr.pages.dev (2026-10-05T16:54:06Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">xHC5nWpk</td>
-              <td class="actions"><a class="preview" href="https://varrestennisclub-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/varrestennisclub.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://varrestennisclub.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://varrestennisclub-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/varrestennisclub.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">18</td>
-              <td class="domain"><strong>windmillrestovasilikos.com</strong></td>
+              <td class="domain"><a class="live" href="https://windmillrestovasilikos.com/" target="_blank" rel="noopener" title="Open live site"><strong>windmillrestovasilikos.com</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → windmillrestovasilikos-com.pages.dev (2026-10-05T16:55:21Z)">done</summary><p class="why-body">Pages custom domains apex+www → windmillrestovasilikos-com.pages.dev (2026-10-05T16:55:21Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">mh00zOvy</td>
-              <td class="actions"><a class="preview" href="https://windmillrestovasilikos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/windmillrestovasilikos.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://windmillrestovasilikos.com/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://windmillrestovasilikos-com.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/windmillrestovasilikos.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">19</td>
-              <td class="domain"><strong>yakinthosflowers.gr</strong></td>
+              <td class="domain"><a class="live" href="https://yakinthosflowers.gr/" target="_blank" rel="noopener" title="Open live site"><strong>yakinthosflowers.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → yakinthosflowers-gr.pages.dev (2026-10-05T16:56:35Z)">done</summary><p class="why-body">Pages custom domains apex+www → yakinthosflowers-gr.pages.dev (2026-10-05T16:56:35Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">ZJ22Lp4B</td>
-              <td class="actions"><a class="preview" href="https://yakinthosflowers-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/yakinthosflowers.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://yakinthosflowers.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://yakinthosflowers-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/yakinthosflowers.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">20</td>
-              <td class="domain"><strong>zanteskysuites.com</strong></td>
+              <td class="domain"><a class="live" href="https://zanteskysuites.com/" target="_blank" rel="noopener" title="Open live site"><strong>zanteskysuites.com</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → zanteskysuites-com.pages.dev (2026-10-05T16:56:52Z)">done</summary><p class="why-body">Pages custom domains apex+www → zanteskysuites-com.pages.dev (2026-10-05T16:56:52Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="Accommodation counters stuck at from-value: missing Elementor webpack bundle counter.*.bundle.min.js (chunk 457). Bundle + chunks/counter.min.js added.">done</summary><p class="why-body">Accommodation counters stuck at from-value: missing Elementor webpack bundle counter.*.bundle.min.js (chunk 457). Bundle + chunks/counter.min.js added.</p></details></td>
               <td class="mono">8N_abCl5</td>
-              <td class="actions"><a class="preview" href="https://zanteskysuites-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/zanteskysuites.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://zanteskysuites.com/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://zanteskysuites-com.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/zanteskysuites.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">21</td>
-              <td class="domain"><strong>zoupanou.gr</strong></td>
+              <td class="domain"><a class="live" href="https://zoupanou.gr/" target="_blank" rel="noopener" title="Open live site"><strong>zoupanou.gr</strong></a></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><details class="why"><summary class="badge badge-done" title="Pages custom domains apex+www → zoupanou-gr.pages.dev (2026-10-05T16:58:14Z)">done</summary><p class="why-body">Pages custom domains apex+www → zoupanou-gr.pages.dev (2026-10-05T16:58:14Z)</p></details></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><details class="why"><summary class="badge badge-done" title="Hero background slideshow: 3/5 images missing; e-con lazyload hid backgrounds. Re-fetched images; unlocked BG lazyload.">done</summary><p class="why-body">Hero background slideshow: 3/5 images missing; e-con lazyload hid backgrounds. Re-fetched images; unlocked BG lazyload.</p></details></td>
               <td class="mono">gln4tKsg</td>
-              <td class="actions"><a class="preview" href="https://zoupanou-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/zoupanou.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="preview" href="https://zoupanou.gr/" target="_blank" rel="noopener">Site</a> <a class="gh" href="https://zoupanou-gr.pages.dev" target="_blank" rel="noopener" title="Pages.dev preview">pages.dev</a> <a class="gh" href="https://github.com/webcorpg/zoupanou.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
         </tbody>
       </table>
@@ -821,6 +845,7 @@
             <th>Form</th>
             <th>HTML</th>
             <th>Cutover</th>
+            <th>MX</th>
             <th>QA</th>
             <th>Form ID</th>
             <th>Links</th>
@@ -836,9 +861,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">KQ_fedAV</td>
-              <td class="actions"><a class="preview" href="https://bluesea-kalyves-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/bluesea-kalyves.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://bluesea-kalyves-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/bluesea-kalyves.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">23</td>
@@ -848,9 +874,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">dpv8gnzQ</td>
-              <td class="actions"><a class="preview" href="https://eliastudioszakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/eliastudioszakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://eliastudioszakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/eliastudioszakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">24</td>
@@ -860,9 +887,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">kwNHwGO5</td>
-              <td class="actions"><a class="preview" href="https://gounelis-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/gounelis.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://gounelis-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/gounelis.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">25</td>
@@ -872,9 +900,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">o-iILKZ7</td>
-              <td class="actions"><a class="preview" href="https://islandretreats-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/islandretreats.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://islandretreats-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/islandretreats.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">26</td>
@@ -884,9 +913,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">D7R0PGQs</td>
-              <td class="actions"><a class="preview" href="https://ixoxromazakynthos-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/ixoxromazakynthos.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://ixoxromazakynthos-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/ixoxromazakynthos.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">27</td>
@@ -896,9 +926,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">d0kDRfUt</td>
-              <td class="actions"><a class="preview" href="https://loukouloschania-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/loukouloschania.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://loukouloschania-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/loukouloschania.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">28</td>
@@ -908,9 +939,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">Jp3xUooR</td>
-              <td class="actions"><a class="preview" href="https://magnoliazakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/magnoliazakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://magnoliazakynthos-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/magnoliazakynthos.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">29</td>
@@ -920,9 +952,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">fwaWVHrd</td>
-              <td class="actions"><a class="preview" href="https://mareasuiteszante-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/mareasuiteszante.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://mareasuiteszante-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/mareasuiteszante.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">30</td>
@@ -932,9 +965,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">-MLQxHAM</td>
-              <td class="actions"><a class="preview" href="https://myprivatekitchen-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/myprivatekitchen.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://myprivatekitchen-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/myprivatekitchen.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">31</td>
@@ -944,9 +978,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">8o7UyVcT</td>
-              <td class="actions"><a class="preview" href="https://sanleonzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/sanleonzante.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://sanleonzante-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/sanleonzante.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">32</td>
@@ -956,9 +991,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">TgtMP2iU</td>
-              <td class="actions"><a class="preview" href="https://soleilvillas-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/soleilvillas.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://soleilvillas-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/soleilvillas.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">33</td>
@@ -968,9 +1004,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">Hqmv2-mG</td>
-              <td class="actions"><a class="preview" href="https://villa-phoenix-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/villa-phoenix.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://villa-phoenix-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/villa-phoenix.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">34</td>
@@ -980,9 +1017,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">lR4kGCpY</td>
-              <td class="actions"><a class="preview" href="https://albadorozante-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/albadorozante.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://albadorozante-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/albadorozante.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">35</td>
@@ -992,9 +1030,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">Z3D57tC9</td>
-              <td class="actions"><a class="preview" href="https://delphisdigital-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/delphisdigital.com" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://delphisdigital-com.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/delphisdigital.com" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
             <tr>
               <td class="num">36</td>
@@ -1004,9 +1043,10 @@
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-done">done</span></td>
               <td><span class="badge badge-pending">pending</span></td>
+              <td><details class="why"><summary class="badge badge-pending" title="Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.">pending</summary><p class="why-body">Still on current mail provider MX (usually Bluehost). Switch to Cloudflare Email Routing when ready — independent of web cutover.</p></details></td>
               <td><span class="badge badge-n-a">n/a</span></td>
               <td class="mono">PGd9F_sN</td>
-              <td class="actions"><a class="preview" href="https://deckboatrentals-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/deckboatrentals.gr" target="_blank" rel="noopener">GitHub</a></td>
+              <td class="actions"><a class="gh" href="https://deckboatrentals-gr.pages.dev" target="_blank" rel="noopener">Preview</a> <a class="gh" href="https://github.com/webcorpg/deckboatrentals.gr" target="_blank" rel="noopener">GitHub</a></td>
             </tr>
         </tbody>
       </table>
